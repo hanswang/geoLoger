@@ -1,0 +1,9 @@
+{
+    "name": "geo-loggin",
+    "version": "0.0.1",
+    "author": "hans.w",
+    "description": "Log given address with geographic data of latitude and longtitude",
+    "dependencies": {
+        "mysql": "latest"
+    }
+}
