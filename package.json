@@ -4,6 +4,8 @@
     "author": "hans.w",
     "description": "Log given address with geographic data of latitude and longtitude",
     "dependencies": {
-        "mysql": "latest"
+        "express": "latest",
+        "jade": "*",
+        "morgan": "*"
     }
 }
