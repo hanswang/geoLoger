@@ -6,8 +6,11 @@ html
         meta(name='viewport', content='width=device-width, initial-scale=1')
         meta(name='description', content='Geo Logger from Google autocomplete plugin and checking 10/50 from NSW regulation')
         meta(name='author', content='Hans.W')
+        link(rel='icon' type='image/x-icon' href='/favicon.ico')
         title #{title} - GeoLogger
         link(rel='stylesheet', href='/css/bootstrap.min.css')
+        style.
+            #map-canvas { height: 700px; width: 100%; display: block; }
     body
         .container.theme-showcase(role='main')
             .page-header.text-center
@@ -31,3 +34,4 @@ html
         .script-Wrapper
             script(type='text/javascript' src='/js/jquery.min.js')
             script(type='text/javascript' src='/js/bootstrap.min.js')
+            block onpageScript

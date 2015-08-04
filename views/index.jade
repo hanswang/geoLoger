@@ -5,13 +5,15 @@ mixin tableRow(idx, data)
         td= data.address.building + ' ' + data.address.street
         td= data.address.zipcode
         td= data.borough
+        td.btn.removeRecord&attributes({'data-srcid': idx})
+            i.glyphicon.glyphicon-remove-circle
 
 extend layout
 block autocomplete
     .input-group
-        input(type='text' class='form-control' placeholder='Find Location...')
+        input(id='autoSearch' type='text' class='form-control' placeholder='Find Location...')
         span.input-group-btn
-            button.btn.btn-primary(type='button') Search!
+            button.btn.btn-primary(type='button') Add
 
 block content
     table.table
@@ -27,11 +29,11 @@ block content
                 +tableRow(key, rest)
 
 block sidebar
-    .widget
-        h4 Widget
-        p
-            |  later replace this with google map api
-            | for sure.
-        p
-            | definitely use maps to map pin
-            | hahah
+    h4 Location Map
+    .canvas
+        #map-canvas
+
+block onpageScript
+    script(type='text/javascript' src='https://maps.googleapis.com/maps/api/js?v=3.20&libraries=places&sensor=false')
+    script(type='text/javascript' src='/js/google-autocomplete.js')
+    script(type='text/javascript' src='/js/pageclient.js')
