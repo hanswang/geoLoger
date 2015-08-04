@@ -1,22 +1,31 @@
 extend layout
+block autocomplete
+    .input-group
+        input(type='text' class='form-control' placeholder='Find Location...')
+        span.input-group-btn
+            button.btn.btn-primary(type='button') Search!
+
 block content
-    p
-        | Vivamus hendrerit arcu sed erat molestie
-        | vehicula. Sed auctor neque eu tellus
-        | rhoncus ut eleifend nibh porttitor. Ut in.
-    p
-        | Donec congue lacinia dui, a porttitor
-        | lectus condimentum laoreet. Nunc eu
-        | ullamcorper orci. Quisque eget odio ac
-        | lectus vestibulum faucibus eget in metus.
-        | In pellentesque faucibus vestibulum. Nulla
-        | at nulla justo, eget luctus tortor.
+    table.table
+        thead
+            tr
+                th #
+                th First Name
+                th Last Name
+                th Username
+        tbody
+            tr
+                td 1
+                td Mark
+                td Otto
+                td @mdo
+
 block sidebar
     .widget
-        h1 Widget
+        h4 Widget
         p
-            | Sed auctor neque eu tellus rhoncus ut
-            | eleifend nibh porttitor. Ut in nulla enim.
+            |  later replace this with google map api
+            | for sure.
         p
-            | Vivamus hendrerit arcu sed erat molestie
-            | vehicula.
+            | definitely use maps to map pin
+            | hahah
