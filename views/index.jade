@@ -1,3 +1,11 @@
+mixin tableRow(idx, data)
+    tr
+        td= idx + 1
+        td= data.name
+        td= data.address.building + ' ' + data.address.street
+        td= data.address.zipcode
+        td= data.borough
+
 extend layout
 block autocomplete
     .input-group
@@ -9,16 +17,14 @@ block content
     table.table
         thead
             tr
-                th #
-                th First Name
-                th Last Name
-                th Username
+                th ID
+                th Name
+                th Address
+                th Zipcode
+                th Borough
         tbody
-            tr
-                td 1
-                td Mark
-                td Otto
-                td @mdo
+            each rest, key in restaurants
+                +tableRow(key, rest)
 
 block sidebar
     .widget
