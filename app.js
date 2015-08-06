@@ -14,6 +14,9 @@ var locationSchema = new mongoose.Schema({
     'updated_at': { type: Date, default: Date.now },
 }, {strict: false});
 locationSchema.index( { 'latitude' : 1, 'longtitude' : 1 }, {unique: true} );
+locationSchema.pre('update', function () {
+    this.update({}, { $set: { updated_at : new Date() } });
+});
 var pModel = mongoose.model('Place', locationSchema);
 
 var app = express()
@@ -58,7 +61,7 @@ app.post('/loggin', jsonParser, function (req, res) {
 app.post('/removelog', jsonParser, function(req, res) {
     if (!req.body) return res.sendStatus(400);
     var q = req.body;
-    pModel.findByIdAndRemove(q.id, function(err, place) {
+    pModel.findByIdAndUpdate(q.id, { 'status' : 'disabled', 'updated_at' : new Date() }, function(err, place) {
         if (err) {
             return res.send({status: 'failed', error: err});
         }
