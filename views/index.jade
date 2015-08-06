@@ -1,11 +1,16 @@
 mixin tableRow(idx, data)
-    tr
+    tr.locationRecord
         td= idx + 1
-        td= data.name
-        td= data.address.building + ' ' + data.address.street
-        td= data.address.zipcode
-        td= data.borough
-        td.btn.removeRecord&attributes({'data-srcid': idx})
+        td
+            = data.name
+            table.table
+                tbody
+                    tr
+                        td.bg-primary Latitude
+                        td= data.latitude
+                        td.bg-primary Longtitude
+                        td= data.longtitude
+        td.btn.removeRecord&attributes({'data-srcid': data.id})
             i.glyphicon.glyphicon-remove-circle
 
 extend layout
@@ -16,17 +21,15 @@ block autocomplete
             button.btn.btn-primary(type='button') Add
 
 block content
-    table.table
+    table.table.locationCollection
         thead
             tr
                 th ID
-                th Name
-                th Address
-                th Zipcode
-                th Borough
+                th Location (Latitude & Longtitude)
+                th Del
         tbody
-            each rest, key in restaurants
-                +tableRow(key, rest)
+            each loc, key in locations
+                +tableRow(key, loc)
 
 block sidebar
     h4 Location Map

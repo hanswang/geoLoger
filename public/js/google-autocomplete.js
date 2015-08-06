@@ -55,6 +55,8 @@ function initialize() {
 
         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
         infowindow.open(map, marker);
+
+        $(document).trigger('place_located', place);
     });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
